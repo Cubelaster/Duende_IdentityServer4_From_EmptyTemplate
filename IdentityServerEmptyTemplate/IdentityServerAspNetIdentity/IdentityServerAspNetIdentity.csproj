@@ -4,6 +4,7 @@
 	  <TargetFramework>net6.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <UserSecretsId>12076470-b9eb-44ca-a757-16c6025fc39d</UserSecretsId>
+	  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,8 @@
 	</PackageReference>
 
 	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+
+	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
 
 	<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0" />
