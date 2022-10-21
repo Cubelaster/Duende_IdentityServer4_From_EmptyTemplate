@@ -16,7 +16,6 @@ namespace IdentityServerEmptyTemplate
             builder.Services.AddRazorPages();
 
             var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
-            const string connectionString = @"Server=.;Database=IdentityServer;Trusted_Connection=True;MultipleActiveResultSets=True";
 
             builder.Services.AddIdentityServer(options =>
                 {
@@ -25,12 +24,12 @@ namespace IdentityServerEmptyTemplate
                 })
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                    options.ConfigureDbContext = b => b.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
                         sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                    options.ConfigureDbContext = b => b.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
                         sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddTestUsers(TestUsers.Users);

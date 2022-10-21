@@ -11,9 +11,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClient", "ConsoleCli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebClient.csproj", "{8ECAA4EE-34DD-4CFA-82AD-66FF193F3BCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAspNetIdentity", "IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{1FC0063A-FE8A-4CF1-ABCE-499567BEA92C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{1FC0063A-FE8A-4CF1-ABCE-499567BEA92C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptClient", "JavaScriptClient\JavaScriptClient.csproj", "{F39176ED-F28E-4288-8603-18D69253E89B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaScriptClient", "JavaScriptClient\JavaScriptClient.csproj", "{F39176ED-F28E-4288-8603-18D69253E89B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServerProjects", "IdentityServerProjects", "{CB4A143E-B8DB-476E-A4F8-FF6E994144AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{42438BD3-B94B-4006-B374-58AA290C4090}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{161E339D-83B4-4500-ACCD-5D9D11F72A8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CA7B973-F479-47DF-9817-616C8001D9DF}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +56,21 @@ Global
 		{F39176ED-F28E-4288-8603-18D69253E89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39176ED-F28E-4288-8603-18D69253E89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39176ED-F28E-4288-8603-18D69253E89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161E339D-83B4-4500-ACCD-5D9D11F72A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161E339D-83B4-4500-ACCD-5D9D11F72A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161E339D-83B4-4500-ACCD-5D9D11F72A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161E339D-83B4-4500-ACCD-5D9D11F72A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE3E0240-AEFB-421D-8822-7D399974EEA7} = {CB4A143E-B8DB-476E-A4F8-FF6E994144AD}
+		{2E2A1DA8-53DF-4EE0-9EE8-069B07BF3C97} = {42438BD3-B94B-4006-B374-58AA290C4090}
+		{40D39790-45EB-4314-8354-99E469A5A0BB} = {42438BD3-B94B-4006-B374-58AA290C4090}
+		{8ECAA4EE-34DD-4CFA-82AD-66FF193F3BCE} = {42438BD3-B94B-4006-B374-58AA290C4090}
+		{1FC0063A-FE8A-4CF1-ABCE-499567BEA92C} = {CB4A143E-B8DB-476E-A4F8-FF6E994144AD}
+		{F39176ED-F28E-4288-8603-18D69253E89B} = {42438BD3-B94B-4006-B374-58AA290C4090}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBD2B021-0722-49E4-A892-428D7CB03FF2}
