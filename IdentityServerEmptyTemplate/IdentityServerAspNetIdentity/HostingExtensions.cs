@@ -22,6 +22,8 @@ internal static class HostingExtensions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
+        var clients = builder.Configuration.GetSection(nameof(Config.Clients)).Get<List<Client>>();
+
         builder.Services
             .AddIdentityServer(options =>
             {

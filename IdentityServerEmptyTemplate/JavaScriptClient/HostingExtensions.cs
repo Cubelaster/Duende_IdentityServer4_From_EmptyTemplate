@@ -21,7 +21,7 @@ internal static class HostingExtensions
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", options =>
             {
-                options.Authority = "https://localhost:5001";
+                options.Authority = builder.Configuration["IdentityUrl"];
 
                 options.ClientId = "javascriptclient";
                 options.ClientSecret = "secret";
@@ -69,7 +69,7 @@ internal static class HostingExtensions
                 .AsBffApiEndpoint();
 
             // Effing hell, this actually acts as a proxy mapping exact endpoint to endpoint
-            endpoints.MapRemoteBffApiEndpoint("/remote", "https://localhost:5002/api/Identity")
+            endpoints.MapRemoteBffApiEndpoint("/remote", app.Configuration["ApiIdentity"])
                     .RequireAccessToken(Duende.Bff.TokenType.User);
         });
 

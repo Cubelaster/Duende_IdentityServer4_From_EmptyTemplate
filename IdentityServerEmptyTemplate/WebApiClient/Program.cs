@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.Authority = "https://localhost:5001";
+        options.Authority = builder.Configuration["IdentityUrl"];
         options.TokenValidationParameters.ValidateAudience = false;
     });
 
@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
     // this defines a CORS policy called "default"
     options.AddPolicy("default", policy =>
     {
-        policy.WithOrigins("https://localhost:5005")
+        policy.WithOrigins(builder.Configuration["ReactAppUrl"])
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
