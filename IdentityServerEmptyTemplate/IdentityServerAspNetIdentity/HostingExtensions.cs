@@ -37,7 +37,8 @@ internal static class HostingExtensions
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(builder.Configuration.GetSection(nameof(Config.Clients)).Get<List<Client>>())
+            .AddInMemoryClients(clients)
+            //.AddInMemoryClients(Config.Clients)
             .AddAspNetIdentity<ApplicationUser>()
             .AddProfileService<CustomProfileService>();
 

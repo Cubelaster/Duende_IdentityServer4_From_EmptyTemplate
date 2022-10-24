@@ -14,12 +14,14 @@ services:
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
         - ASPNETCORE_URLS=https://+:443;http://+:80
-        - Kestrel:Certificates:Development:Password=8f0ac80e-0bca-456c-81d3-6944c24d2cf7
         - ConnectionStrings__DefaultConnection=Server=sqldata;Database=identityserveraspnetidentity;MultipleActiveResultSets=True;User Id=sa;Password=Pass@word
-        - Clients__0__ClientId=TestClient
-        - Clients__0__AllowedGratTypes:0=client_credentials
-        - Clients__0__ClientSecrets__0=secret
-        - Clients__0__AllowedScopes__0=jebate
+        - Clients__1__RedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5003/signin-oidc
+        - Clients__1__PostLogoutRedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5003/signout-callback-oidc
+        - Clients__2__RedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5004/signin-oidc
+        - Clients__2__PostLogoutRedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5004/signout-callback-oidc
+        - Clients__3__RedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005/callback
+        - Clients__3__PostLogoutRedirectUris__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005
+        - Clients__3__AllowedCorsOrigins__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005
     ports:
         - "5001:443"
     volumes:
@@ -30,9 +32,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - Kestrel:Certificates:Development:Password=aa3a6cf5-6ab5-43e6-a9f6-1f99b4707a3c
-      - IdentityUrl=https://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5001
-      - ReactAppUrl=https://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5005
+      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
+      - ReactAppUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005
     ports:
       - "5002:443"
     volumes:
@@ -43,8 +44,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - Kestrel:Certificates:Development:Password=dde12059-0240-4e4e-940e-3cd040ac5156
-      - IdentityUrl=https://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5001
+      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
     ports:
       - "5003:443"
     volumes:
@@ -55,9 +55,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - Kestrel:Certificates:Development:Password=a1065dd3-e9b3-4a67-88ee-e242c1a8dc4a
-      - IdentityUrl=https://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5001
-      - ApiIdentity=https://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5002/api/Identity
+      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
+      - ApiIdentity=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5002/api/Identity
     ports:
       - "5004:443"
     volumes:
