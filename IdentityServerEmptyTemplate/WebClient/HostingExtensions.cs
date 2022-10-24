@@ -18,6 +18,7 @@ namespace WebClient
             .AddOpenIdConnect("oidc", options =>
             {
                 options.Authority = builder.Configuration["IdentityUrl"];
+                options.MetadataAddress = builder.Configuration["IdentityUrl"] + "/.well-known/openid-configuration";
 
                 options.ClientId = "webclient";
                 options.ClientSecret = "secret";
