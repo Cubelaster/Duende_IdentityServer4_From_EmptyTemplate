@@ -19,6 +19,7 @@ namespace WebClient
             {
                 options.Authority = builder.Configuration["IdentityUrl"];
                 options.MetadataAddress = builder.Configuration["IdentityUrl"] + "/.well-known/openid-configuration";
+                options.RequireHttpsMetadata = false;
 
                 options.ClientId = "webclient";
                 options.ClientSecret = "secret";

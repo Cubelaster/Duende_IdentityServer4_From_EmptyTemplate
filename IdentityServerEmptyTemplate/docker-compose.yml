@@ -4,6 +4,11 @@ services:
   sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest
 
+  proxy:
+    build:
+      context:  ./nginx
+      dockerfile: Dockerfile
+
   identityserveraspnetidentity:
     image: ${DOCKER_REGISTRY-}identityserveraspnetidentity
     build:
@@ -11,6 +16,7 @@ services:
       dockerfile: IdentityServerAspNetIdentity/Dockerfile
     depends_on:
         - sqldata
+        - proxy
 
   webclient:
     image: ${DOCKER_REGISTRY-}webclient

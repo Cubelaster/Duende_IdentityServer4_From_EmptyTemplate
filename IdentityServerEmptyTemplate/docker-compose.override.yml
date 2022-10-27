@@ -10,6 +10,12 @@ services:
     volumes:
       - identityserveraspnetidentity-sqldata:/var/opt/mssql
 
+  proxy:
+    ports:
+      - "5000:443" 
+      - "8000:80"
+    restart: always
+
   identityserveraspnetidentity:
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
@@ -24,6 +30,7 @@ services:
         - Clients__3__AllowedCorsOrigins__0=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005
     ports:
         - "5001:443"
+        - "8001:80"
     volumes:
         - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
         - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -32,10 +39,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
+      - IdentityUrl=http://identityserveraspnetidentity
       - ReactAppUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5005
     ports:
       - "5002:443"
+      - "8002:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -44,9 +52,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
+      - IdentityUrl=http://identityserveraspnetidentity
     ports:
       - "5003:443"
+      - "8003:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -55,10 +64,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - IdentityUrl=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5001
-      - ApiIdentity=https://${APP_EXTERNAL_DNS_NAME_OR_IP}:5002/api/Identity
+      - IdentityUrl=http://identityserveraspnetidentity
+      - ApiIdentity=http://${APP_EXTERNAL_DNS_NAME_OR_IP}:5002/api/Identity
     ports:
       - "5004:443"
+      - "8004:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

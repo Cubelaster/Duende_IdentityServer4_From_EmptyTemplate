@@ -1,5 +1,7 @@
 # Duende IdentityServer4
 
+This is the inspiration: [eShopOnContainers](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/?WT.mc_id=dotnet-35129-website)
+
 Following tutorials from [Duende](https://docs.duendesoftware.com/identityserver/v6/quickstarts/0_overview/)
 
 In Quickstart4 part, where the database is added, I opted for SqlServer instead of SqlLite.  

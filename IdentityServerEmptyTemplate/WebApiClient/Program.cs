@@ -13,6 +13,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = builder.Configuration["IdentityUrl"];
+        options.MetadataAddress = builder.Configuration["IdentityUrl"] + "/.well-known/openid-configuration";
+        options.RequireHttpsMetadata = false;
         options.TokenValidationParameters.ValidateAudience = false;
     });
 
