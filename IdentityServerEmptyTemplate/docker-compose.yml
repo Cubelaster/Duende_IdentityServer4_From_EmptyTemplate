@@ -25,6 +25,7 @@ services:
       dockerfile: WebClient/Dockerfile
     depends_on:
         - identityserveraspnetidentity
+        - proxy
 
   webapiclient:
     image: ${DOCKER_REGISTRY-}webapiclient
@@ -33,6 +34,7 @@ services:
       dockerfile: WebApiClient/Dockerfile
     depends_on:
         - identityserveraspnetidentity
+        - proxy
 
   javascriptclient:
     image: ${DOCKER_REGISTRY-}javascriptclient
@@ -41,3 +43,4 @@ services:
       dockerfile: JavaScriptClient/Dockerfile
     depends_on:
         - identityserveraspnetidentity
+        - proxy
